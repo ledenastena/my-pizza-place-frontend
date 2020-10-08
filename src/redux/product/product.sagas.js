@@ -44,7 +44,9 @@ export function* fetchProductsStartAsync(action) {
   }
 
   try {
-    const response = yield axios.get(`${process.env.BACKEND_URL}/products${reqQueryParam !== '' ? '/?type=' + reqQueryParam : ''}`)
+    const tempUrl = `${process.env.BACKEND_URL}/products${reqQueryParam !== '' ? '/?type=' + reqQueryParam : ''}`
+    console.log(tempUrl)
+    const response = yield axios.get(tempUrl)
 
     
     yield put(fetchProductsSuccess({ products: response.data, typeOfProducts })) 
