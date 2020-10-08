@@ -1,5 +1,4 @@
 var HtmlWebpackPlugin = require("html-webpack-plugin")
-const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   resolve: {
@@ -9,8 +8,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/template.html"
-    }),
-    new Dotenv()
+    })
   ],
   devServer: {
     historyApiFallback: true
