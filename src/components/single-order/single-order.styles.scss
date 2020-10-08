@@ -1,0 +1,40 @@
+.single-order-container {
+  margin-bottom: 30px;
+  border-bottom: 1px solid lightgrey;
+
+  .single-order-date {
+    margin-bottom: 20px;
+  }
+
+  .order-image-column {
+    width: 50%;
+  }
+
+  .order-quantity-column {
+    width: 10%;
+  }
+
+  .order-price-column {
+    width: 40%;
+  }
+
+  .order-headings {
+    display: flex;
+    font-size: 14px;
+    color: #2abbc6;
+  }
+
+  .order-total {
+    display: flex;
+    padding: 15px 0;
+    color: #2abbc6;
+
+    .order-total-text {
+      font-size: 14px;
+    }
+
+    .order-total-amount {
+      font-weight: 600;
+    }
+  }
+}

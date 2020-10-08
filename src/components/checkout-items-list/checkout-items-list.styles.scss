@@ -1,0 +1,30 @@
+.checkout-items-list-container {
+  .checkout-headings {
+    margin: 10px 0;
+    display: none;
+    
+    .heading {
+      font-size: 18px;
+      font-weight: 300;
+    }
+  }
+
+  .img-column {
+    width: 40%;
+  }
+
+  .info-column {
+    width: 27%;
+  }
+  
+  .remove-column {
+    width: 6%;
+  }
+
+  .checkout-total {
+    display: flex;
+    justify-content: flex-end;
+    margin: 30px 0;
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,90 @@
+$textColor: #525252;
+$btnColor: #2abbc6;
+
+.cart-dropdown-container {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  position: absolute;
+  top: 50px;
+  right: auto;
+  box-shadow: 0 0 20px #999;
+  background-color: white;
+  width: 300px;
+  padding: 10px;
+  margin: 0 10px;
+  z-index: 1;
+  
+  .drawer {
+    display: flex;
+    flex-direction: column;
+    
+    .all-items-container {
+      max-height: 191px;
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+    }
+    
+    .img-column {
+      width: 60%;
+    }
+    
+    .info-column {
+      width: 40%;
+    }
+    
+    .cart-item-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin: 5px 0;
+      font-size: 16px;
+      
+      .cart-item-image {
+        height: 80px;
+        
+        img {
+          height: 100%; 
+        }
+      }
+    }
+    
+    .cart-total {
+      display: flex;
+      margin: 20px 0 10px 0;
+      font-size: 20px;
+      
+      .text {
+        flex-grow: 2;
+      }
+    }
+
+    .checkout-button-container {
+      padding: 5px 0;
+      display: flex;    
+      justify-content: center;
+
+      .checkout-button {      
+        text-align: center;
+        padding: 7px 15px;
+        border-radius: 4px;
+        color: white;
+        background-color: $btnColor;
+        font-size: 14px;
+        cursor: pointer;
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10+ and Edge */
+        user-select: none; /* Standard syntax */
+      }
+    }
+  }
+  
+  .empty-message {
+    padding: 20px 30px;
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0 auto;
+  }
+}

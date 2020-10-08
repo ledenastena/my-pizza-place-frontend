@@ -1,0 +1,149 @@
+$textColor: #525252;
+$smallBtnColor: #2abbc6;
+
+.single-product-container {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: $textColor;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  padding: 10px;
+  
+  &:hover {
+    opacity: 0.8;
+    box-shadow: 0 0 30px #999;
+  }
+
+  .product-description {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    font-size: 16px;
+    font-family: Montserrat;
+    font-weight: 300;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    z-index: -1;
+    white-space: pre;
+    transition: opacity 1s;
+    text-align: left;
+
+    &.show-description {
+      opacity: 1;
+      z-index: auto;
+    }
+
+    .small-image {
+      width: 30%;
+      margin-bottom: 10px;
+    }
+  }
+  
+  .list-image {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto 20px auto;
+    opacity: 1;
+    transition: opacity 1s;
+
+    &.hide-image {
+      opacity:0;
+    }
+  }
+  
+  .item-title {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .item-price {
+    text-align: center;
+    margin-bottom: 10px;
+  }  
+
+  .quantity-section {
+    display: flex;    
+    align-items: center;
+    justify-content: center;
+
+    .small-btn {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      width: 20px;
+      height: 20px;
+      color: white;
+      background-color: $smallBtnColor;
+      border-radius: 4px;
+      margin: 0 7px;
+      -webkit-user-select: none; /* Safari */
+      -ms-user-select: none; /* IE 10+ and Edge */
+      user-select: none; /* Standard syntax */
+    }
+
+    .display-quantity {
+      width: 30px;
+      font-size: 16px;
+      text-align: center;
+      padding: 5px 0;
+      cursor: default;
+    }
+  }
+
+  .add-to-cart-section {
+    display: flex;    
+    justify-content: center;
+    margin-top: 10px;
+
+    .add-to-cart-button {
+      text-align: center;
+      padding: 7px 15px;
+      border-radius: 4px;
+      color: white;
+      background-color: $smallBtnColor;
+      min-width: 115px;
+      font-size: 16px;
+      cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -ms-user-select: none; /* IE 10+ and Edge */
+      user-select: none; /* Standard syntax */
+
+      .added-cart-text {
+        animation: disappear 1s ease-in 2 alternate-reverse;
+      }
+
+      @keyframes disappear {
+        0% {opacity: 1;}
+        100% {opacity: 0;}
+      }
+    }
+  }
+
+  .admin-section {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    justify-content: space-around;
+
+    a {
+      background-color:#ffb133;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 4px;
+    }
+
+   .edit-icon {
+     margin-right: 10px;
+   }
+  }
+
+}

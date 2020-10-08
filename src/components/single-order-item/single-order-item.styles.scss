@@ -1,0 +1,21 @@
+.single-order-item-container {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+
+  .order-image-column {
+    width: 50%;
+
+    .order-image {
+      height: 80px;
+    }
+  }
+
+  .order-quantity-column {
+    width: 10%;
+  }
+
+  .order-price-column {
+    width: 40%;
+  }
+}

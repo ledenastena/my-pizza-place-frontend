@@ -1,0 +1,89 @@
+$textColor: #525252;
+
+
+.header-container {
+  font-size: 18px;
+  color: $textColor;
+  margin-bottom: 50px;
+
+  .header-content-width {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    a {
+      text-decoration: none;
+      margin: 5px 15px;
+      padding: 8px;
+
+      &:visited {
+        color: $textColor;
+      }
+    }
+
+    .home-link {
+      display: flex;
+      font-size: 40px;
+      font-weight: 300;
+      padding: 20px;
+      margin: 15px 0;
+    }  
+
+    .navigation-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+
+      .regular-menu {
+        display: none;
+      }
+
+      .logout-button {
+        margin: 5px 15px;
+        padding: 8px;
+        cursor: pointer;
+      }
+
+      .cart-button {
+        font-size: 28px;
+        color: $textColor;
+        cursor: pointer; 
+      }
+
+      .hamburger-menu-button {
+        cursor: pointer;
+        margin: 0 30px;
+
+        .hamburger-bar {
+            width: 30px;
+            height: 3px;
+            background-color: $textColor;
+            margin: 4px 0;
+        }
+      }
+
+      .currency-select {
+        font-size: 12px;
+        margin: 0 15px;
+        display: flex;
+        align-items: center;
+
+        .currency-button {
+          color: $textColor;
+          cursor: pointer;
+          padding: 3px;
+          margin: 0 5px;
+
+          &.selected-currency {
+            background-color: $textColor;
+            color: white;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+  }  
+}
