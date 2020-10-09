@@ -22,7 +22,7 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({
       filename: 'styles.[contentHash].css'
     }),
-    new webpack.EnvironmentPlugin([/*'NODE_ENV',*/ 'BACKEND_URL'])
+    new webpack.EnvironmentPlugin(['BACKEND_URL'])
   ],
   module: {
     rules: [
