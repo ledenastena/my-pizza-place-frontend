@@ -23,7 +23,6 @@ class ProductsPage extends React.Component {
 
   render() {
     const { items, isFetching, errorMessage } = this.props
-    console.log(items)
 
     if (isFetching) {
       return (

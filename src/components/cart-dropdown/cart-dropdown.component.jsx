@@ -5,6 +5,8 @@ import { selectSelectedCurrency } from '../../redux/product/product.selectors'
 import { toggleCartVisible } from '../../redux/cart/cart.actions'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import LoadingImage from '../loading-image/loading-image.component'
+import squareImage from '../../assets/square.png'
 
 class CartDropdown extends React.Component {
   elementRef = null
@@ -48,7 +50,7 @@ class CartDropdown extends React.Component {
               { cartItems.map((cartItem, index) => (
                 <div key={index} className='cart-item-container'>
                   <div className='cart-item-image img-column'>
-                    <img src={ `${process.env.BACKEND_URL}/products/${cartItem.item._id}/${cartItem.item.image_name}` } alt='product'/>
+                    <LoadingImage imageSrc={ `${process.env.BACKEND_URL}/products/${cartItem.item._id}/${cartItem.item.image_name}` } onError={ (e) => e.target.src=squareImage } alt='product' />
                   </div>
                   <div className='cart-item-quantity info-column'>x{cartItem.quantity}</div>
                 </div>

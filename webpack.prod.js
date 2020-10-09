@@ -5,6 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = merge(common, {
   mode: 'production',
@@ -20,7 +21,8 @@ module.exports = merge(common, {
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: 'styles.[contentHash].css'
-    })
+    }),
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'BACKEND_URL'])
   ],
   module: {
     rules: [

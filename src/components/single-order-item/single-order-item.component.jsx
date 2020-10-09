@@ -2,6 +2,8 @@ import React from 'react'
 import './single-order-item.styles.scss'
 import { selectSelectedCurrency } from '../../redux/product/product.selectors'
 import { connect } from 'react-redux'
+import LoadingImage from '../loading-image/loading-image.component'
+import squareImage from '../../assets/square.png'
 
 class SingleOrderItem extends React.Component {
   render() {
@@ -12,7 +14,7 @@ class SingleOrderItem extends React.Component {
     return(
       <div className='single-order-item-container'>
         <div className='order-image-column'>
-          <img className='order-image' src={`${process.env.BACKEND_URL}/products/${item._id}/${item.image_name}`} />
+          <LoadingImage className='order-image' imageSrc={`${process.env.BACKEND_URL}/products/${item._id}/${item.image_name}`} onError={ (e) => e.target.src=squareImage } alt='product' />
         </div>
         <div className='order-quantity-column'>{quantity}</div>
         <div className='order-price-column'>

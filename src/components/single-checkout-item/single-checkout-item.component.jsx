@@ -5,6 +5,8 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { selectSelectedCurrency } from '../../redux/product/product.selectors'
 import { clearItemFromCart, decreaseItemQuantity, addItemToCart } from '../../redux/cart/cart.actions'
 import { connect } from 'react-redux'
+import LoadingImage from '../loading-image/loading-image.component'
+import squareImage from '../../assets/square.png'
 
 class SingleCheckoutItem extends React.Component {
   render() {
@@ -14,7 +16,7 @@ class SingleCheckoutItem extends React.Component {
       <div className='single-checkout-item-container'>
         <div className='img-column'>
           <div className='checkout-item-image'>
-            <img src={ `${process.env.BACKEND_URL}/products/${cartItem.item._id}/${cartItem.item.image_name}` } alt='product'/>
+            <LoadingImage imageSrc={ `${process.env.BACKEND_URL}/products/${cartItem.item._id}/${cartItem.item.image_name}` } onError={ (e) => e.target.src=squareImage } alt='product' />
           </div>
         </div>       
         <div className='options-column'>

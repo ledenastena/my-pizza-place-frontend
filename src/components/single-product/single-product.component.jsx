@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
-
+import LoadingImage from '../loading-image/loading-image.component'
 import squareImage from '../../assets/square.png'
 
 class SingleProduct extends React.Component {
@@ -81,17 +81,12 @@ class SingleProduct extends React.Component {
     return (
       <div className='single-product-container'>
         <div className={ `product-description ${ this.state.showDescription ? 'show-description' : '' }`}>
-          <img className='small-image' src={ `${process.env.BACKEND_URL}/products/${item._id}/${item.image_name}` } onError={ (e) => e.target.src=squareImage } alt='product-image' />
+          <LoadingImage className='small-image' imageSrc={ `${process.env.BACKEND_URL}/products/${item._id}/${item.image_name}` } onError={ (e) => e.target.src=squareImage } alt='product-image' />
           <div>
             { item.description }
           </div>
         </div>
-        <img className={ `list-image ${ this.state.showDescription ? 'hide-image' : '' }`}
-          src={ `${process.env.BACKEND_URL}/products/${item._id}/${item.image_name}` }
-          onError={ (e) => e.target.src=squareImage }
-          alt='product-image'
-          onClick={ this.toggleShowDescription }
-        />
+        <LoadingImage className={ `list-image ${ this.state.showDescription ? 'hide-image' : '' }`} imageSrc={ `${process.env.BACKEND_URL}/products/${item._id}/${item.image_name}` } onError={ (e) => e.target.src=squareImage } alt='product-image' onClick={ this.toggleShowDescription }/>
         <span className='item-title'>{ item.name }</span>
         {
           (selectedCurrency === 'eur')?
