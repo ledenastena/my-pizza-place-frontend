@@ -20,7 +20,7 @@ export function* addOrderStartAsync(action) {
     yield put(addOrderSuccess())
   }
   catch(err) {
-    yield put(addOrderFailure())
+    yield put(addOrderFailure('There was a problem trying to make an order!'))
   }
 }
 

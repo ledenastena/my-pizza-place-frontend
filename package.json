@@ -6,8 +6,22 @@
   "scripts": {
     "start": "node server.js",
     "dev": "webpack-dev-server --config webpack.dev.js --open",
+    "test": "jest --watchAll",
     "build": "webpack --config webpack.prod.js",
     "heroku-postbuild": "webpack --config webpack.prod.js"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "clearMocks": true
   },
   "author": "",
   "license": "ISC",
@@ -43,8 +57,10 @@
     "dotenv-webpack": "^2.0.0",
     "file-loader": "^6.1.0",
     "html-webpack-plugin": "^4.4.1",
+    "jest": "^26.5.3",
     "mini-css-extract-plugin": "^0.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "redux-saga-tester": "^1.0.874",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",

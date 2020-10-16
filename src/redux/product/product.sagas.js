@@ -42,7 +42,7 @@ export function* fetchProductsStartAsync(action) {
       reqQueryParam = ''
     }
   }
-
+  
   try {
     const response = yield axios.get(`${process.env.BACKEND_URL}/products${reqQueryParam !== '' ? '/?type=' + reqQueryParam : ''}`)
     

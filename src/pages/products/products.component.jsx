@@ -14,7 +14,7 @@ class ProductsPage extends React.Component {
 
     // Here we are determing when we want to fetch products from the database. The idea is that if the user opens a page with type of products that are 
     // already fetched there is no need to make another request to the back-end. If the last fetch was for products of type 'pizza', opening the pizza
-    // product page will not make another request because we already have those exact product in our Redux state. If we open another product page and request
+    // product page will not make another request because we already have those exact products in our Redux state. If we open another product page and request
     // a different set of products then a new request to the back-end is made.
     if (!currentlyShowingProducts || (!requestedProductType && currentlyShowingProducts !== 'all') || (requestedProductType && requestedProductType !== currentlyShowingProducts)) {
       fetchProductsStart(this.props.match.params.type)
