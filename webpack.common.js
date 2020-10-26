@@ -4,7 +4,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  entry: './src/index.jsx',
+  entry: './src/index.js',
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/template.html',
