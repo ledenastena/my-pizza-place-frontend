@@ -1,11 +1,19 @@
-import React from 'react';
-import './checkout-form.styles.scss';
-import { clearAllCartItems, addOrderStart } from '../../redux/cart/cart.actions';
-import { selectCartItems, selectAddingOrder, selectAddingOrderError } from '../../redux/cart/cart.selectors';
-import { selectCurrentUser, selectAuthToken } from '../../redux/user/user.selectors'
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import CustomButton from '../custom-button/custom-button.component';
+import React from 'react'
+import './checkout-form.styles.scss'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { clearAllCartItems, addOrderStart } from '../../redux/cart/cart.actions'
+import {
+  selectCartItems,
+  selectAddingOrder,
+  selectAddingOrderError,
+} from '../../redux/cart/cart.selectors'
+import {
+  selectCurrentUser,
+  selectAuthToken,
+} from '../../redux/user/user.selectors'
+import CustomButton from '../custom-button/custom-button.component'
 
 class CheckoutForm extends React.Component {
   state = {
@@ -13,51 +21,72 @@ class CheckoutForm extends React.Component {
     success: false,
     name: '',
     number: '',
-    address: ''
+    address: '',
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.addingOrder && !this.props.addingOrder && !this.props.addingOrderError) {
-      this.setState({
-        success: true
+    const {
+      addingOrder,
+      addingOrderError,
+      clearAllCartItems,
+      history,
+    } = this.props
+    const { success } = this.state
+
+    // Setting the state inside componentDidUpdate must be performed inside a function like this
+    if (prevProps.addingOrder && !addingOrder && !addingOrderError) {
+      this.performUpdate(() => {
+        this.setState({
+          success: true,
+        })
       })
     }
 
-    if (this.state.success) {
+    if (success) {
       setTimeout(() => {
-        this.props.clearAllCartItems();
-        this.props.history.push('/');
+        clearAllCartItems()
+        history.push('/')
       }, 1500)
     }
   }
 
+  performUpdate = (callback) => {
+    callback()
+  }
+
   handleChange = (e) => {
-    let key = e.target.name;
-    let value = e.target.value;
+    const { name, value } = e.target
 
     this.setState({
-      [key]: value
-    });
-
+      [name]: value,
+    })
   }
 
   handleSubmit = (e) => {
-    const { currentUser, authToken, addOrderStart, cartItems, qtyTotal, cartTotalEur, cartTotalUsd } = this.props
-    e.preventDefault();
-      
-    if (currentUser) {
-      let items = []
-      let quantities = []
+    const {
+      currentUser,
+      authToken,
+      addOrderStart,
+      cartItems,
+      qtyTotal,
+      cartTotalEur,
+      cartTotalUsd,
+    } = this.props
+    e.preventDefault()
 
-      cartItems.forEach(cartItem => {
+    if (currentUser) {
+      const items = []
+      const quantities = []
+
+      cartItems.forEach((cartItem) => {
         items.push(cartItem.item._id)
         quantities.push(cartItem.quantity)
-      })    
-      
+      })
+
       this.setState({
         name: '',
         number: '',
-        address: ''
+        address: '',
       })
 
       addOrderStart({
@@ -67,92 +96,87 @@ class CheckoutForm extends React.Component {
           quantities,
           total_quantity: qtyTotal,
           total_price_eur: cartTotalEur,
-          total_price_usd: cartTotalUsd
+          total_price_usd: cartTotalUsd,
         },
-        token: authToken
-      })            
+        token: authToken,
+      })
     } else {
       this.setState({
         isLoading: true,
         name: '',
         number: '',
-        address: ''
-      });
-      setTimeout(() => (this.setState({
-        isLoading: false,
-        success: true
-      })), 1500);
-    }          
+        address: '',
+      })
+      setTimeout(
+        () =>
+          this.setState({
+            isLoading: false,
+            success: true,
+          }),
+        1500
+      )
+    }
   }
 
   render() {
-    const { isLoading, success } = this.state;
+    const { isLoading, success, name, number, address } = this.state
     const { addingOrder, addingOrderError } = this.props
 
-    let buttonText = success ? 'Done' : 'Order';
+    const buttonText = success ? 'Done' : 'Order'
 
     return (
-      <div className='checkout-form-container'>
-        <form onSubmit={ this.handleSubmit }>
-          <label
-            htmlFor='name'
-            className='form-label'
-            >
-              Your Name
+      <div className="checkout-form-container">
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="name" className="form-label">
+            Your Name
+            <input
+              id="name"
+              type="text"
+              name="name"
+              required
+              value={name}
+              className="form-input"
+              onChange={this.handleChange}
+            />
           </label>
-          <input 
-            id='name'
-            type='text'
-            name='name'
-            required
-            value={ this.state.name }
-            className='form-input'
-            onChange={ this.handleChange }
-          />
-          <label
-            htmlFor='number'
-            className='form-label'
-            >
-              Your Number
+          <label htmlFor="number" className="form-label">
+            Your Number
+            <input
+              id="number"
+              type="text"
+              name="number"
+              required
+              value={number}
+              className="form-input"
+              onChange={this.handleChange}
+            />
           </label>
-          <input
-            id='number'
-            type='text'
-            name='number'
-            required
-            value={ this.state.number }
-            className='form-input'
-            onChange={ this.handleChange }
-          />
-          <label
-            htmlFor='address'
-            className='form-label'
-            >
-              Your Addres
+          <label htmlFor="address" className="form-label">
+            Your Addres
+            <input
+              id="address"
+              type="text"
+              name="address"
+              required
+              value={address}
+              className="form-input"
+              onChange={this.handleChange}
+            />
           </label>
-          <input
-            id='address'
-            type='text'
-            name='address'
-            required
-            value={ this.state.address }
-            className='form-input'
-            onChange={ this.handleChange }
-          />
-          <div className='form-footer'>
-            {
-              addingOrderError ?  
-              <span className='error-message'>{ addingOrderError }</span>
-              : ''
-            }
-            <CustomButton type='submit' isLoading={ isLoading || addingOrder }>
-              { buttonText }
+          <div className="form-footer">
+            {addingOrderError ? (
+              <span className="error-message">{addingOrderError}</span>
+            ) : (
+              ''
+            )}
+            <CustomButton type="submit" isLoading={isLoading || addingOrder}>
+              {buttonText}
             </CustomButton>
           </div>
         </form>
       </div>
-   );
-  };
+    )
+  }
 }
 
 const mapStateToProps = (state) => ({
@@ -160,12 +184,47 @@ const mapStateToProps = (state) => ({
   addingOrderError: selectAddingOrderError(state),
   currentUser: selectCurrentUser(state),
   authToken: selectAuthToken(state),
-  cartItems: selectCartItems(state)
+  cartItems: selectCartItems(state),
 })
 
 const mapDispatchToProps = (dispatch) => ({
   clearAllCartItems: () => dispatch(clearAllCartItems()),
-  addOrderStart: (reqObj) => dispatch(addOrderStart(reqObj))
-});
+  addOrderStart: (reqObj) => dispatch(addOrderStart(reqObj)),
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(CheckoutForm));
+CheckoutForm.defaultProps = {
+  cartTotalEur: 0,
+  cartTotalUsd: 0,
+  qtyTotal: 0,
+  addingOrder: false,
+  addingOrderError: null,
+  currentUser: null,
+  authToken: null,
+  cartItems: [],
+  history: {
+    push: null,
+  },
+  clearAllCartItems: null,
+  addOrderStart: null,
+}
+
+CheckoutForm.propTypes = {
+  cartTotalEur: PropTypes.number,
+  cartTotalUsd: PropTypes.number,
+  qtyTotal: PropTypes.number,
+  addingOrder: PropTypes.bool,
+  addingOrderError: PropTypes.string,
+  currentUser: PropTypes.object,
+  authToken: PropTypes.string,
+  cartItems: PropTypes.arrayOf(PropTypes.object),
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }),
+  clearAllCartItems: PropTypes.func,
+  addOrderStart: PropTypes.func,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(CheckoutForm))

@@ -2,7 +2,7 @@
   position: relative;
   max-width: 500px;
   width: 100%;
-  
+
   textarea {
     resize: none;
     width: 100%;
@@ -11,17 +11,17 @@
     font-size: 16px;
     border: none;
     border-bottom: 1px solid #525252;
-    
+
     &:focus {
       outline: none;
     }
-    
+
     &:focus ~ label {
       font-size: 12px;
       bottom: 140px;
     }
   }
-  
+
   label {
     position: absolute;
     font-size: 16px;
@@ -29,11 +29,10 @@
     left: 5px;
     bottom: 35px;
     transition: all 0.4s ease;
-    
+
     &.shrink {
       font-size: 12px;
       bottom: 140px;
     }
   }
-  
 }

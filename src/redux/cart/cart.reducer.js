@@ -8,76 +8,77 @@ const INITIAL_STATE = {
   fetchingOrders: false,
   fetchingOrdersError: null,
   addingOrder: false,
-  addingOrderError: null
+  addingOrderError: null,
 }
 
 const cartReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case(cartActionTypes.TOGGLE_CART_VISIBLE):
+    case cartActionTypes.TOGGLE_CART_VISIBLE:
       return {
         ...state,
-        cartVisible: !state.cartVisible
+        cartVisible: !state.cartVisible,
       }
-    case(cartActionTypes.ADD_ITEM_TO_CART): 
+    case cartActionTypes.ADD_ITEM_TO_CART:
       return {
         ...state,
-        cartItems: insertItemIntoCart(state.cartItems, action.payload)
+        cartItems: insertItemIntoCart(state.cartItems, action.payload),
       }
-    case (cartActionTypes.DECREASE_ITEM_QUANTITY):
+    case cartActionTypes.DECREASE_ITEM_QUANTITY:
       return {
         ...state,
-        cartItems: decreaseItemQuantity(state.cartItems, action.payload)
+        cartItems: decreaseItemQuantity(state.cartItems, action.payload),
       }
-    case (cartActionTypes.CLEAR_ITEM_FROM_CART): 
+    case cartActionTypes.CLEAR_ITEM_FROM_CART:
       return {
         ...state,
-        cartItems: state.cartItems.filter(cartItem => cartItem.item._id !== action.payload.item._id)
+        cartItems: state.cartItems.filter(
+          (cartItem) => cartItem.item._id !== action.payload.item._id
+        ),
       }
-    case (cartActionTypes.CLEAR_ALL_CART_ITEMS):
+    case cartActionTypes.CLEAR_ALL_CART_ITEMS:
       return {
         ...state,
-        cartItems: []
+        cartItems: [],
       }
-    case (cartActionTypes.FETCH_ORDERS_START):
+    case cartActionTypes.FETCH_ORDERS_START:
       return {
         ...state,
         fetchingOrders: true,
-        ordersError: null
+        ordersError: null,
       }
-    case (cartActionTypes.FETCH_ORDERS_SUCCESS):
+    case cartActionTypes.FETCH_ORDERS_SUCCESS:
       return {
         ...state,
         userOrders: action.payload,
         fetchingOrders: false,
-        ordersError: null
+        ordersError: null,
       }
-    case (cartActionTypes.FETCH_ORDERS_FAILURE):
+    case cartActionTypes.FETCH_ORDERS_FAILURE:
       return {
         ...state,
         fetchingOrders: false,
-        ordersError: 'There was a problem fetching your orders.'
+        ordersError: 'There was a problem fetching your orders.',
       }
-    case (cartActionTypes.ADD_ORDER_START):
+    case cartActionTypes.ADD_ORDER_START:
       return {
         ...state,
         addingOrder: true,
-        addingOrderError: null
+        addingOrderError: null,
       }
-    case (cartActionTypes.ADD_ORDER_SUCCESS):
+    case cartActionTypes.ADD_ORDER_SUCCESS:
       return {
         ...state,
         addingOrder: false,
-        addingOrderError: null
+        addingOrderError: null,
       }
-    case (cartActionTypes.ADD_ORDER_FAILURE):
+    case cartActionTypes.ADD_ORDER_FAILURE:
       return {
         ...state,
         addingOrder: false,
-        addingOrderError: action.payload
+        addingOrderError: action.payload,
       }
-    default: 
+    default:
       return state
-    
   }
 }
 

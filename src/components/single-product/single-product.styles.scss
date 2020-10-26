@@ -14,7 +14,7 @@ $smallBtnColor: #2abbc6;
   overflow: hidden;
   transition: all 0.5s ease;
   padding: 10px;
-  
+
   &:hover {
     opacity: 0.8;
     box-shadow: 0 0 30px #999;
@@ -45,7 +45,7 @@ $smallBtnColor: #2abbc6;
       margin-bottom: 10px;
     }
   }
-  
+
   .list-image {
     width: 100%;
     max-width: 450px;
@@ -54,22 +54,22 @@ $smallBtnColor: #2abbc6;
     transition: opacity 1s;
 
     &.hide-image {
-      opacity:0;
+      opacity: 0;
     }
   }
-  
+
   .item-title {
     text-align: center;
     margin-bottom: 10px;
   }
-  
+
   .item-price {
     text-align: center;
     margin-bottom: 10px;
-  }  
+  }
 
   .quantity-section {
-    display: flex;    
+    display: flex;
     align-items: center;
     justify-content: center;
 
@@ -88,6 +88,10 @@ $smallBtnColor: #2abbc6;
       -webkit-user-select: none; /* Safari */
       -ms-user-select: none; /* IE 10+ and Edge */
       user-select: none; /* Standard syntax */
+
+      &:focus {
+        outline: 1px solid #525252;
+      }
     }
 
     .display-quantity {
@@ -100,7 +104,7 @@ $smallBtnColor: #2abbc6;
   }
 
   .add-to-cart-section {
-    display: flex;    
+    display: flex;
     justify-content: center;
     margin-top: 10px;
 
@@ -122,8 +126,12 @@ $smallBtnColor: #2abbc6;
       }
 
       @keyframes disappear {
-        0% {opacity: 1;}
-        100% {opacity: 0;}
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
       }
     }
   }
@@ -135,15 +143,14 @@ $smallBtnColor: #2abbc6;
     justify-content: space-around;
 
     a {
-      background-color:#ffb133;
+      background-color: #ffb133;
       color: white;
       padding: 10px 15px;
       border-radius: 4px;
     }
 
-   .edit-icon {
-     margin-right: 10px;
-   }
+    .edit-icon {
+      margin-right: 10px;
+    }
   }
-
 }

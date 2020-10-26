@@ -1,6 +1,17 @@
 import { all, call } from 'redux-saga/effects'
-import { onFetchProductsStart, onFetchProductTypesStart, onEditProductStart, onAddProductStart, onDeleteProductStart } from './product/product.sagas'
-import { onUserLoginStart, onUserLogoutStart, onUserSignUpStart, onEditUserStart } from './user/user.sagas'
+import {
+  onFetchProductsStart,
+  onFetchProductTypesStart,
+  onEditProductStart,
+  onAddProductStart,
+  onDeleteProductStart,
+} from './product/product.sagas'
+import {
+  onUserLoginStart,
+  onUserLogoutStart,
+  onUserSignUpStart,
+  onEditUserStart,
+} from './user/user.sagas'
 import { onAddOrderStart, onFetchOrdersStart } from './cart/cart.sagas'
 
 export default function* rootSaga() {
@@ -15,6 +26,6 @@ export default function* rootSaga() {
     call(onAddProductStart),
     call(onDeleteProductStart),
     call(onAddOrderStart),
-    call(onFetchOrdersStart)
+    call(onFetchOrdersStart),
   ])
 }

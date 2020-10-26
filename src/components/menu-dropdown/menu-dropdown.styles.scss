@@ -8,7 +8,7 @@
   background-color: white;
   box-shadow: 0 0 20px #999;
   z-index: 1;
-    
+
   hr {
     width: 90%;
   }
@@ -16,24 +16,24 @@
   .logout-button {
     cursor: pointer;
   }
-  
+
   button {
     background-color: transparent;
     border: none;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 300;
     cursor: pointer;
-    
+
     &:focus {
       border: none;
       outline: none;
     }
   }
-  
+
   .menu-dropdown-item {
     padding: 5px 20px;
     font-size: 20px;
-    
+
     &:hover {
       opacity: 0.5;
     }

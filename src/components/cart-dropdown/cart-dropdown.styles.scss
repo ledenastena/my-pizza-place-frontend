@@ -13,26 +13,26 @@ $btnColor: #2abbc6;
   padding: 10px;
   margin: 0 10px;
   z-index: 1;
-  
+
   .drawer {
     display: flex;
     flex-direction: column;
-    
+
     .all-items-container {
       max-height: 191px;
       display: flex;
       flex-direction: column;
       overflow: auto;
     }
-    
+
     .img-column {
       width: 60%;
     }
-    
+
     .info-column {
       width: 40%;
     }
-    
+
     .cart-item-container {
       display: flex;
       justify-content: space-between;
@@ -40,21 +40,21 @@ $btnColor: #2abbc6;
       width: 100%;
       margin: 5px 0;
       font-size: 16px;
-      
+
       .cart-item-image {
         height: 80px;
-        
+
         img {
-          height: 100%; 
+          height: 100%;
         }
       }
     }
-    
+
     .cart-total {
       display: flex;
       margin: 20px 0 10px 0;
       font-size: 20px;
-      
+
       .text {
         flex-grow: 2;
       }
@@ -62,10 +62,10 @@ $btnColor: #2abbc6;
 
     .checkout-button-container {
       padding: 5px 0;
-      display: flex;    
+      display: flex;
       justify-content: center;
 
-      .checkout-button {      
+      .checkout-button {
         text-align: center;
         padding: 7px 15px;
         border-radius: 4px;
@@ -79,7 +79,7 @@ $btnColor: #2abbc6;
       }
     }
   }
-  
+
   .empty-message {
     padding: 20px 30px;
     font-size: 18px;

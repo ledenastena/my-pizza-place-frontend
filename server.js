@@ -1,7 +1,9 @@
 const path = require('path')
 const express = require('express')
+
 const app = express()
 const serveStatic = require('serve-static')
+
 const pathToServe = path.join(__dirname, 'dist')
 const faviconFilesPath = path.join(__dirname, 'favicon-files')
 
@@ -15,5 +17,5 @@ app.get('*', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log('Server is running on port ' + port)
+  console.log(`Server is running on port ${port}`)
 })

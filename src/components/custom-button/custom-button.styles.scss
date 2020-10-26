@@ -8,19 +8,19 @@
   color: white;
   border-radius: 4px;
 
-    svg {
-      margin-right: 10px;
-    }
+  svg {
+    margin-right: 10px;
+  }
 
   &.delete {
     background-color: #ff3d3d;
   }
 
   &.edit {
-    background-color:#ffb133;
+    background-color: #ffb133;
   }
- 
+
   &.create {
-    background-color:#2abbc6;
+    background-color: #2abbc6;
   }
 }
