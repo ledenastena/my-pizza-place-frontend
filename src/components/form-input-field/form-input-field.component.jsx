@@ -13,9 +13,6 @@ const FormInputField = ({
   autoComplete,
 }) => (
   <div className={`form-input-container ${applyClass || ''}`}>
-    <label htmlFor={name} className={`${value !== '' && 'shrink'}`}>
-      {label}
-    </label>
     <input
       id={name}
       name={name}
@@ -25,6 +22,9 @@ const FormInputField = ({
       onChange={onChange}
       autoComplete={autoComplete}
     />
+    <label htmlFor={name} className={`${value !== '' && 'shrink'}`}>
+      {label}
+    </label>
   </div>
 )
 
